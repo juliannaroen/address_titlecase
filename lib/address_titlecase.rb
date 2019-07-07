@@ -1,6 +1,2 @@
 require "address_titlecase/version"
-
-module AddressTitlecase
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require "address_titlecase/titleizer"
