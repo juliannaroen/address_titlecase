@@ -3,25 +3,37 @@ require 'spec_helper'
 
 describe AddressTitlecase::Titleizer do  
   describe '.titleize' do
-    subject(:titleize) { described_class.titleize(address, {}) }
-    let(:properly_titleized_address) { "123 Sesame St SE\n Salem, OR 97301" }
+    subject(:titleize) { described_class.titleize(input_address, overrides) }
 
-    context 'with a downcased address' do
-      let(:address) { "123 sesame st se\n salem, or 97301" }
+    context 'without overrides' do
+      let(:titleized_address) { "123 Sesame St SE\nSalem, OR 97301" }
+      let(:overrides) { {} }
 
-      it { is_expected.to eq(properly_titleized_address) }
+      context 'with a downcased address' do
+        let(:input_address) { "123 sesame st se\nsalem, or 97301" }
+
+        it { is_expected.to eq(titleized_address) }
+      end
+
+      context 'with a upcased address' do
+        let(:input_address) { "123 SESAME ST SE\nSALEM, OR 97301" }
+
+        it { is_expected.to eq(titleized_address) }
+      end
+
+      context 'with a inproper titlecased address' do
+        let(:input_address) { "123 Sesame St Se\nSalem, Or 97301" }
+
+        it { is_expected.to eq(titleized_address) }
+      end
     end
 
-    context 'with a upcased address' do
-      let(:address) { "123 SESAME ST SE\n SALEM, OR 97301" }
+    context 'with overrides' do
+      let(:overrides) { { 'Se' => 'Se', 'St' => 'ST' } }
+      let(:input_address) { "123 Sesame St Se\nSalem, Or 97301" }
+      let(:titleized_address) { "123 Sesame ST Se\nSalem, OR 97301" }
 
-      it { is_expected.to eq(properly_titleized_address) }
-    end
-
-    context 'with a inproper titlecased address' do
-      let(:address) { "123 Sesame St Se\n Salem, Or 97301" }
-
-      it { is_expected.to eq(properly_titleized_address) }
+      it { is_expected.to eq(titleized_address) }
     end
   end
 end

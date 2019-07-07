@@ -10,10 +10,12 @@ module AddressTitlecase
 
       REMAIN_UPCASE = US_STATES | TERRITORIES | MILITARY | DIRECTIONS | COUNTRIES | MISC
 
-      def titleize(address, opts)
+      def titleize(address, overrides)
         address.gsub(/\w+['’]?\w*/) do |word|
-          if REMAIN_UPCASE.include?(word.upcase) ||
-            opts[:upcase]&.include?(word.upcase)
+          overriden_word = overrides[word]
+          if overriden_word
+            overriden_word
+          elsif REMAIN_UPCASE.include?(word.upcase)
             word.upcase
           else
             word.capitalize
@@ -25,8 +27,8 @@ module AddressTitlecase
 end
 
 class String
-  def address_titlecase(opts = {})
-    AddressTitlecase::Titleizer.titleize(self, opts)
+  def address_titlecase(overrides = {})
+    AddressTitlecase::Titleizer.titleize(self, overrides)
   end
 
   alias_method :address_titleize, :address_titlecase
