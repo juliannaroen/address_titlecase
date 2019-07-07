@@ -62,12 +62,8 @@ describe String do
   end
 
   describe '.address_titleize' do
-    subject(:address_titleize) { address.address_titleize }
-    let(:address) { '123 Sesame St' }
-
-    it 'calls AddressTitlecase::Titleizer.titleize on the String class' do
-      expect(AddressTitlecase::Titleizer).to receive(:titleize).with(described_class, {})
-      address_titleize
+    it 'is aliased to .address_titlecase' do
+      expect(described_class.instance_method(:address_titlecase)).to eq(described_class.instance_method(:address_titleize))
     end
   end
 end
