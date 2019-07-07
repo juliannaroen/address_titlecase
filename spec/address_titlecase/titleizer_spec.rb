@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe AddressTitlecase::Titleizer do  
   describe '.titleize' do
-    subject(:titleize) { described_class.titleize(input_address, overrides) }
+    subject(:titleize) { described_class.titleize(input_address, overrides: overrides) }
 
     context 'without overrides' do
       let(:titleized_address) { "123 Sesame St SE\nSalem, OR 97301" }
@@ -40,12 +40,24 @@ end
 
 describe String do
   describe '.address_titlecase' do
-    subject(:address_titlecase) { address.address_titlecase }
-    let(:address) { '123 Sesame St' }
+    let(:address) { '123 sesame st' }
 
-    it 'calls AddressTitlecase::Titleizer.titleize on the String class' do
-      expect(AddressTitlecase::Titleizer).to receive(:titleize).with(described_class, {})
-      address_titlecase
+    context 'without overrides' do
+      subject(:address_titlecase) { address.address_titlecase }
+
+      it 'calls AddressTitlecase::Titleizer.titleize on the String class' do
+        expect(AddressTitlecase::Titleizer).to receive(:titleize).with(described_class, {})
+        address_titlecase
+      end
+    end
+
+    context 'with overrides' do
+      subject(:address_titlecase) { address.address_titlecase(overides: { 'Se' => 'SE' }) }
+
+      it 'calls AddressTitlecase::Titleizer.titleize on the String class with overrides' do
+        expect(AddressTitlecase::Titleizer).to receive(:titleize).with(described_class, overides: { 'Se' => 'SE' })
+        address_titlecase
+      end
     end
   end
 
