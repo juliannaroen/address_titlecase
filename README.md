@@ -1,6 +1,6 @@
 # AddressTitlecase
 
-Adds `String#address_titlecase` to properly titleize US addresses so that states, directions, and other words that would normally be capitalized in a titlecase method remain uppercase.
+Adds `String#address_titlecase` to properly titleize US addresses so that states, directions, and other abbreviations that would normally be capitalized in a titlecase method remain uppercase.
 
 ```ruby
 > "123 SESAME ST SE, SALEM, OR 97301".address_titlecase
