@@ -7,6 +7,8 @@ Adds `String#address_titlecase` to properly titleize US addresses so that states
 => "123 Sesame St SE, Salem, OR 97301"
 ```
 
+## Options
+
 To override any existing functionality, an `overrides` hash option can be passed where the key value pair represents a mapping of what the key should become.
 
 ```ruby
