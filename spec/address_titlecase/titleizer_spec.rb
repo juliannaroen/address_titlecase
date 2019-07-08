@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-
-describe AddressTitlecase::Titleizer do  
+describe AddressTitlecase::Titleizer do
   describe '.titleize' do
     subject(:titleize) { described_class.titleize(input_address, overrides: overrides) }
 
@@ -39,7 +40,7 @@ describe AddressTitlecase::Titleizer do
 end
 
 describe String do
-  describe '.address_titlecase' do
+  describe '#address_titlecase' do
     let(:address) { '123 sesame st' }
 
     context 'without overrides' do
@@ -52,16 +53,16 @@ describe String do
     end
 
     context 'with overrides' do
-      subject(:address_titlecase) { address.address_titlecase(overides: { 'Se' => 'SE' }) }
+      subject(:address_titlecase) { address.address_titlecase(overrides: { 'Se' => 'SE' }) }
 
       it 'calls AddressTitlecase::Titleizer.titleize on the String class with overrides' do
-        expect(AddressTitlecase::Titleizer).to receive(:titleize).with(described_class, overides: { 'Se' => 'SE' })
+        expect(AddressTitlecase::Titleizer).to receive(:titleize).with(described_class, overrides: { 'Se' => 'SE' })
         address_titlecase
       end
     end
   end
 
-  describe '.address_titleize' do
+  describe '#address_titleize' do
     it 'is aliased to .address_titlecase' do
       expect(described_class.instance_method(:address_titlecase)).to eq(described_class.instance_method(:address_titleize))
     end
