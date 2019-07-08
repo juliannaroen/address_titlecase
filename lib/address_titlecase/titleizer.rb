@@ -37,7 +37,7 @@ end
 
 # String.address_titlecase
 #   Allow the AddressTitlecase::Titleizer.titleize method to be called on a String object as `address_titlecase`.
-#   Method is also aliased to `address_titleize`
+#   Method is also aliased to `address_titleize`.
 #   Ex:
 #     '123 sesame st'.address_titlecase(overrides: {'st' => 'ST'}) => '123 Sesame ST'
 
