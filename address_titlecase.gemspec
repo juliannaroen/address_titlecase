@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['juliannaroen']
   spec.email         = ['jsroen@gmail.com']
 
-  spec.summary       = 'Smartly capitalizes US addresses'
+  spec.summary       = 'Smartly capitalize US addresses'
   spec.homepage      = 'https://github.com/juliannaroen/address_titlecase'
   spec.license       = 'MIT'
 
