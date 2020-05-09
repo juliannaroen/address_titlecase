@@ -11,7 +11,7 @@ Titleize US addresses so that states, directions, and other abbreviations that w
 
 ## Options
 
-To override any existing functionality an `overrides` argument can be passed where the key value pair represents a mapping of what the key should become.
+Customize transformations by providing an `overrides` argument where the keys denote the words/abbreviations that should be mapped to specific values.
 
 ```ruby
 > "123 SESAME ST SE, SALEM, OR 97301".address_titlecase(overrides: { 'ST' => 'ST', 'SE' => 'Se' })
