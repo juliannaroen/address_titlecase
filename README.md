@@ -1,6 +1,6 @@
-# AddressTitlecase
+# Address Titlecase
 
-Adds `String#address_titlecase` to properly titleize US addresses so that states, directions, and other abbreviations that would normally be capitalized in a titlecase method remain uppercase.
+Properly titleize US addresses so that states, directions, and other abbreviations that would normally be capitalized in a titlecase method remain uppercase.
 
 ```ruby
 > "123 SESAME ST SE, SALEM, OR 97301".address_titlecase
@@ -9,14 +9,14 @@ Adds `String#address_titlecase` to properly titleize US addresses so that states
 
 ## Options
 
-To override any existing functionality, an `overrides` hash option can be passed where the key value pair represents a mapping of what the key should become.
+To override any existing functionality, an `overrides` argument can be passed where the key value pair represents a mapping of what the key should become.
 
 ```ruby
 > "123 SESAME ST SE, SALEM, OR 97301".address_titlecase(overrides: { 'ST' => 'ST', 'SE' => 'Se' })
 => "123 Sesame ST Se, Salem, OR 97301"
 ```
 
-`String#address_titlecase` is also aliased as `String#address_titleize`.
+`address_titlecase` is also aliased as `address_titleize`.
 
 ## Installation
 
