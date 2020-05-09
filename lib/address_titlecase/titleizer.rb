@@ -12,15 +12,20 @@ module AddressTitlecase
   class Titleizer
     class << self
       US_STATES = %w[AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY].freeze
-      TERRITORIES = %w[AS DC FM GU MH MP PW PR VI].freeze
+      US_TERRITORIES = %w[AS DC FM GU MH MP PW PR VI].freeze
+
+      CA_PROVINCES = %w[AB BC MB NB NL NS ON PE QC SK].freeze
+      CA_TERRITORIES = %w[NT NU YT].freeze
+
       MILITARY = %w[APO FPO MPO AE AA AP].freeze
+
       DIRECTIONS = %w[NE NW SE SW].freeze
       COUNTRIES = %w[USA].freeze
       MISC = %w[PO RR].freeze
 
-      REMAIN_UPCASE = US_STATES | TERRITORIES | MILITARY | DIRECTIONS | COUNTRIES | MISC
+      REMAIN_UPCASE = US_STATES | US_TERRITORIES | CA_PROVINCES | CA_TERRITORIES | MILITARY | DIRECTIONS | COUNTRIES | MISC
 
-      def titleize(address, opts)
+      def titleize(address, opts = {})
         overrides = opts['overrides'] || opts[:overrides] || {}
         address.gsub(/\w+['’]?\w*/) do |word|
           overriden_word = overrides[word]
