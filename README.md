@@ -1,6 +1,6 @@
 # Address Titlecase
 
-Properly titleize US addresses so that states, directions, and other abbreviations that would normally be capitalized in a titlecase method remain uppercase.
+Titleize US addresses so that states, directions, and other abbreviations that would normally be titlecased by [`String#titleize`](https://apidock.com/rails/String/titleize) remain uppercase.
 
 ```ruby
 > "123 SESAME ST SE, SALEM, OR 97301".address_titlecase
