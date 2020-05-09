@@ -1,5 +1,7 @@
 # Address Titlecase
 
+[![Build Status](https://travis-ci.com/juliannaroen/address_titlecase.svg?token=GqtPi1VKmx9gqq9JuxSW&branch=master)](https://travis-ci.com/juliannaroen/address_titlecase)
+
 Titleize US addresses so that states, directions, and other abbreviations that would normally be titlecased by [`String#titleize`](https://apidock.com/rails/String/titleize) remain uppercase.
 
 ```ruby
