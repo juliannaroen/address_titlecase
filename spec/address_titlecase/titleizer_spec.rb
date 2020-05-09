@@ -22,7 +22,7 @@ describe AddressTitlecase::Titleizer do
         it { is_expected.to eq(titleized_address) }
       end
 
-      context 'with a inproper titlecased address' do
+      context 'with an inproper titlecased address' do
         let(:input_address) { "123 Sesame St Se\nSalem, Or 97301" }
 
         it { is_expected.to eq(titleized_address) }
