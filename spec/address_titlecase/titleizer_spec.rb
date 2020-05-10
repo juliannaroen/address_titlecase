@@ -24,6 +24,12 @@ describe AddressTitlecase::Titleizer do
       it { is_expected.to eq("123 Sesame St SE\nSalem, OR 97301") }
     end
 
+    context 'with a Canadian address' do
+      let(:input_address) { "10-123 1/2 MAIN ST SE\nMONTREAL QC H3Z 2Y7" }
+
+      it { is_expected.to eq("10-123 1/2 Main St SE\nMontreal QC H3Z 2Y7") }
+    end
+
     context 'with overrides' do
       subject(:titleize) do
         described_class.titleize(

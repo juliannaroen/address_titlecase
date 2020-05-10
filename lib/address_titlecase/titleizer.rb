@@ -31,12 +31,18 @@ module AddressTitlecase
           overriden_word = overrides[word]
           if overriden_word
             overriden_word
-          elsif REMAIN_UPCASE.include?(word.upcase)
+          elsif REMAIN_UPCASE.include?(word.upcase) || zip_code_with_letters?(word)
             word.upcase
           else
             word.capitalize
           end
         end
+      end
+
+      private
+
+      def zip_code_with_letters?(word)
+        !word.count('0-9').zero?
       end
     end
   end
