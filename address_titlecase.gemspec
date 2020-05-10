@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['juliannaroen']
   spec.email         = ['jsroen@gmail.com']
 
-  spec.summary       = 'Smartly capitalize US addresses'
+  spec.summary       = 'Smartly capitalize US & Canadian addresses'
   spec.homepage      = 'https://github.com/juliannaroen/address_titlecase'
   spec.license       = 'MIT'
 
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 2.1'
   spec.add_development_dependency 'pry-byebug', '~> 3.7'
-  spec.add_development_dependency 'rake', '~> 10.5'
+  spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rspec', '~> 3.8'
   spec.add_development_dependency 'rubocop', '~> 0.72'
 end
