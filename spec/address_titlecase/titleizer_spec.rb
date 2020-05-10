@@ -4,37 +4,41 @@ require 'spec_helper'
 
 describe AddressTitlecase::Titleizer do
   describe '.titleize' do
-    subject(:titleize) { described_class.titleize(input_address, overrides: overrides) }
+    subject(:titleize) { described_class.titleize(input_address) }
 
-    context 'without overrides' do
-      let(:titleized_address) { "123 Sesame St SE\nSalem, OR 97301" }
-      let(:overrides) { {} }
+    context 'with a downcased address' do
+      let(:input_address) { "123 sesame st se\nsalem, or 97301" }
 
-      context 'with a downcased address' do
-        let(:input_address) { "123 sesame st se\nsalem, or 97301" }
+      it { is_expected.to eq("123 Sesame St SE\nSalem, OR 97301") }
+    end
 
-        it { is_expected.to eq(titleized_address) }
-      end
+    context 'with an upcased address' do
+      let(:input_address) { "123 SESAME ST SE\nSALEM, OR 97301" }
 
-      context 'with a upcased address' do
-        let(:input_address) { "123 SESAME ST SE\nSALEM, OR 97301" }
+      it { is_expected.to eq("123 Sesame St SE\nSalem, OR 97301") }
+    end
 
-        it { is_expected.to eq(titleized_address) }
-      end
+    context 'with a typical titlecased address' do
+      let(:input_address) { "123 Sesame St Se\nSalem, Or 97301" }
 
-      context 'with an inproper titlecased address' do
-        let(:input_address) { "123 Sesame St Se\nSalem, Or 97301" }
+      it { is_expected.to eq("123 Sesame St SE\nSalem, OR 97301") }
+    end
 
-        it { is_expected.to eq(titleized_address) }
-      end
+    context 'with a Canadian address' do
+      let(:input_address) { "10-123 1/2 MAIN ST SE\nMONTREAL QC H3Z 2Y7" }
+
+      it { is_expected.to eq("10-123 1/2 Main St SE\nMontreal QC H3Z 2Y7") }
     end
 
     context 'with overrides' do
-      let(:overrides) { { 'Se' => 'Se', 'St' => 'ST' } }
-      let(:input_address) { "123 Sesame St Se\nSalem, Or 97301" }
-      let(:titleized_address) { "123 Sesame ST Se\nSalem, OR 97301" }
+      subject(:titleize) do
+        described_class.titleize(
+          "123 Sesame St Se\nSalem, Or 97301",
+          overrides: { 'Se' => 'Se', 'St' => 'ST' }
+        )
+      end
 
-      it { is_expected.to eq(titleized_address) }
+      it { is_expected.to eq("123 Sesame ST Se\nSalem, OR 97301") }
     end
   end
 end
