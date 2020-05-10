@@ -27,7 +27,7 @@ module AddressTitlecase
 
       def titleize(address, opts = {})
         overrides = opts['overrides'] || opts[:overrides] || {}
-        address.gsub(/\w+['’]?\w*/) do |word|
+        address.gsub(/[[:alpha:]]+['’]?[[:alpha:]]*/) do |word|
           overriden_word = overrides[word]
           if overriden_word
             overriden_word
