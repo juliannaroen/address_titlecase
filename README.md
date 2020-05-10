@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/juliannaroen/address_titlecase.svg?token=GqtPi1VKmx9gqq9JuxSW&branch=master)](https://travis-ci.com/juliannaroen/address_titlecase)
 [![Gem Version](https://badge.fury.io/rb/address_titlecase.svg)](https://badge.fury.io/rb/address_titlecase)
 
-Titleize US addresses so that states, directions, and other abbreviations that would normally be titlecased by [`String#titleize`](https://apidock.com/rails/String/titleize) remain uppercase.
+Titleize US and Canadian addresses so that states, directions, and other abbreviations that would normally be titlecased by [`String#titleize`](https://apidock.com/rails/String/titleize) remain uppercase.
 
 ```ruby
 > "123 SESAME ST SE, SALEM, OR 97301".address_titlecase
